@@ -1,0 +1,53 @@
+.Container {
+  margin-top: 10vh;
+  display: flex;
+  justify-content: center;
+}
+
+.DropdownActivator {
+  max-width: 30rem;
+  width: 20rem;
+  min-height: 50px;
+  border: 1px solid var(--linegrey);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 4px;
+  padding: 7px 10px 7px 10px;
+  position: relative;
+  cursor: pointer;
+}
+
+.DropdownActivator:hover,
+.DropdownActivator:active {
+  border: 1px solid black;
+}
+
+.DropdownShow {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.DropdownLabel {
+  position: absolute;
+  font-size: 10px;
+  top: -17px;
+}
+
+.DropdownOptions {
+  margin-top: 5px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.hidden {
+  display: none;
+}
+
+.ChosenOption {
+  width: auto;
+  background-color: var(--hovergrey);
+  padding: 5px 7px 5px 7px;
+  border-radius: 10px;
+  margin: 3px 3px 3px 3px;
+  font-size: 14px;
+}
