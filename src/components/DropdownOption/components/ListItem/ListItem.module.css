@@ -1,0 +1,21 @@
+.ListItem {
+  cursor: pointer;
+  display: block;
+  text-align: left;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-left: 10px;
+}
+
+.ListItem input {
+  margin-right: 10px;
+}
+
+.ListItem:hover {
+  background-color: var(--hovergrey);
+}
+
+.ListItemChosen {
+  background-color: var(--chosenblue);
+  font-weight: bold;
+}
