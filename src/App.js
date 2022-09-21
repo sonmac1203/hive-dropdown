@@ -1,23 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useMemo } from 'react';
+import { Dropdown, DropdownOption } from './components';
 
 function App() {
+  const label = 'Random word';
+  const options = useMemo(
+    () => [
+      { value: 'myname', label: 'My Name' },
+      { value: 'is', label: 'Is' },
+      { value: 'son', label: 'Son' },
+      { value: 'tran-thien', label: 'Tran Thien' },
+      { value: 'mac', label: 'Mac' },
+      { value: 'greeting', label: 'Greeting' },
+      { value: 'hive-ai', label: 'Hive AI' },
+    ],
+    []
+  );
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='App'>
+      <Dropdown multiple label={label}>
+        {options.length > 0 &&
+          options.map(({ value, label }, k) => (
+            <DropdownOption value={value} label={label} id={k} />
+          ))}
+      </Dropdown>
     </div>
   );
 }
