@@ -10,6 +10,8 @@ export const Dropdown = ({ children, label, multiple }) => {
     setOpened(!opened);
   };
 
+  const defaultLabel = 'Label';
+
   const onSelectAll = () => {
     const uncheckedOptions = [];
     for (const [k, v] of Object.entries(options)) {
@@ -95,7 +97,9 @@ export const Dropdown = ({ children, label, multiple }) => {
     <div className={styles.Container}>
       <div className={styles.Dropdown}>
         <div className={styles.DropdownActivator} onClick={toggleDropdown}>
-          <span className={styles.DropdownLabel}>{label}</span>
+          <span className={styles.DropdownLabel}>
+            {label ? label : defaultLabel}
+          </span>
           <div className={styles.DropdownShow}>{getChosenLables()}</div>
           <span>&#9660;</span>
         </div>
