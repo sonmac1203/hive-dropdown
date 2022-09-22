@@ -1,70 +1,103 @@
-# Getting Started with Create React App
+# Dropdown component
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## About
 
-## Available Scripts
+- Author: Son Tran Thien Mac
+- Technologies: React, HTML, CSS
 
-In the project directory, you can run:
+## Description
 
-### `npm start`
+This is a reusable **Dropdown** component providing the functionalities as below:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- Close and open dropdown by clicking into activator button.
+- Choose between `multi-select` or `single-select`.
+- Allow select and deselect all options at once in multi-select mode.
+- Show selected options on activator button when dropdown collapses.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
+## Installation
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Procedure
 
-### `npm run build`
+1.  Clone this Github repository
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+        git clone https://github.com/sonmac1203/hive-dropdown.git
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+2.  Redirect to the root directory of this repository
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+        cd hive-dropdown
 
-### `npm run eject`
+3.  Install dependencies
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+        npm install
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+4.  Run the program
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+        npm start
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Learn More
+## Usage
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Props
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+#### `Dropdown`
 
-### Code Splitting
+| Prop name | Description         | Default   | Example  |
+|-----------|---------------------|-----------|----------|
+| multiple  | Enable multi-select | `false`   | `true`   |
+| label     | Label of Dropdown   | `"Label"` | `"Name"` |
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+#### `DropdownOption`
 
-### Analyzing the Bundle Size
+| Prop name | Description                         | Default | Example |
+|-----------|-------------------------------------|---------|---------|
+| value     | Value of option                     | N/A     | `"son"` |
+| label     | Label of Dropdo                     | N/A     | `"Son"` |
+| id        | index when mapping, starting from 0 | N/A     | 1       |
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### Sample usage
 
-### Making a Progressive Web App
+```js
+import React, { useMemo } from 'react';
+import { Dropdown, DropdownOption } from './components';
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+function App() {
+  const label = 'Random word';
+  const options = useMemo(
+    () => [
+      { value: 'myname', label: 'My Name' },
+      { value: 'is', label: 'Is' },
+      { value: 'son', label: 'Son' },
+      { value: 'tran-thien', label: 'Tran Thien' },
+      { value: 'mac', label: 'Mac' },
+      { value: 'greeting', label: 'Greeting' },
+      { value: 'hive-ai', label: 'Hive AI' },
+    ],
+    []
+  );
+  return (
+    <div className='App'>
+      <Dropdown label={label}>
+        {options.length > 0 &&
+          options.map(({ value, label }, k) => (
+            <DropdownOption value={value} label={label} id={k} />
+          ))}
+      </Dropdown>
+    </div>
+  );
+}
 
-### Advanced Configuration
+export default App;
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+```
 
-### Deployment
+## Interface
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+Multi-select:
 
-### `npm run build` fails to minify
+<img width="435" alt="image" src="https://user-images.githubusercontent.com/83494548/191630679-06f91180-1a0c-4eee-b509-f0801a7202a7.png">
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Single-select
+
+<img width="415" alt="image" src="https://user-images.githubusercontent.com/83494548/191630738-12572e35-a371-4ed7-9a31-442fbd2abb40.png">
+
